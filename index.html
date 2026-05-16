@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Privacy Policy — OpalDreamCo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      max-width: 720px;
+      margin: 3rem auto;
+      padding: 0 1.5rem 4rem;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #fafaf9;
+    }
+    h1 { font-size: 1.875rem; margin-bottom: 0.25rem; }
+    h2 { font-size: 1.25rem; line-height: 1.2; margin-top: 2.5rem; }
+    .effective { color: #6b7280; font-size: 0.95rem; margin-top: 0; }
+    code {
+      background: #f3f4f6;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 0.9em;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    a { color: #c2410c; }
+    ul { padding-left: 1.4rem; }
+    li { margin: 0.25rem 0; }
+    hr { border: none; border-top: 1px solid #e5e7eb; margin: 3rem 0 1.5rem; }
+    footer { color: #6b7280; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <h1>OpalDreamCo — Privacy Policy</h1>
+  <p class="effective"><strong>Effective date:</strong> May 15, 2026</p>
+
+  <h2>1. About this app</h2>
+  <p>PODStudio is a personal analytics and scheduling tool built and operated by OpalDreamCo for use with its own Etsy shop (OpalDreamCo) and its own Pinterest account. It is not distributed to other users, not offered as a service, and not made available to the public.</p>
+  <p>PODStudio runs locally on the operator's own computer. There is no hosted backend, no shared infrastructure, and no third-party operator.</p>
+
+  <h2>2. Data PODStudio reads</h2>
+  <p>When OpalDreamCo authorizes PODStudio against an external account, it reads only the data needed to power its own workflows:</p>
+
+  <p><strong>From Etsy (via the Etsy Open API v3):</strong></p>
+  <ul>
+    <li>OpalDreamCo's own shop listings (title, tags, description, price, lifetime view and favorite counts)</li>
+    <li>OpalDreamCo's own shop receipts and transactions</li>
+    <li>OpalDreamCo's own payment-account ledger entries (Etsy fees, ads spend, refunds)</li>
+  </ul>
+  <p>Etsy scopes requested: <code>transactions_r</code>, <code>listings_r</code>, <code>shops_r</code> — all read-only.</p>
+
+  <p><strong>From Printful (via the Printful API):</strong></p>
+  <ul>
+    <li>OpalDreamCo's own fulfillment orders and their costs</li>
+  </ul>
+  <p>Printful scopes requested: <code>sync_products:read</code>, <code>orders:read</code>, <code>products:read</code> — all read-only.</p>
+
+  <p><strong>From Pinterest (via the Pinterest API v5):</strong></p>
+  <ul>
+    <li>OpalDreamCo's own boards (list and metadata)</li>
+    <li>OpalDreamCo's own pins (read)</li>
+    <li>The ability to create new pins on OpalDreamCo's own boards (write)</li>
+    <li>OpalDreamCo's own account profile (username)</li>
+  </ul>
+  <p>Pinterest scopes requested: <code>boards:read</code>, <code>pins:read</code>, <code>pins:write</code>, <code>user_accounts:read</code>.</p>
+
+  <p>PODStudio does not read data from any other Etsy shop, Printful account, or Pinterest account.</p>
+
+  <h2>3. Data PODStudio writes</h2>
+  <p>The only data PODStudio writes to an external service is <strong>new pins to Pinterest</strong>, on OpalDreamCo's own boards, using content (images, titles, descriptions, links) that OpalDreamCo created or uploaded inside PODStudio.</p>
+  <p>PODStudio does not modify any Etsy listings, Etsy orders, Printful orders, or Pinterest boards/pins it did not create. PODStudio does not post to any other social network.</p>
+
+  <h2>4. Where data is stored</h2>
+  <p>All data PODStudio reads is stored in a single SQLite database file on OpalDreamCo's local computer (<code>./data/podstudio.db</code>). Uploaded pin images are stored on the same local computer (<code>./data/uploads/pinterest/</code>).</p>
+  <p>OAuth access tokens and refresh tokens for all connected services are encrypted at rest using AES-256-GCM with a key held only by OpalDreamCo.</p>
+  <p>PODStudio does not transmit any of this data to PODStudio's own servers, because PODStudio has no servers. The application communicates directly between OpalDreamCo's computer and the official APIs of Etsy, Printful, and Pinterest.</p>
+
+  <h2>5. Data sharing</h2>
+  <p>PODStudio does not share, sell, transfer, or disclose any data to any third party. There are no advertisers, no analytics vendors, no error-tracking services, and no cloud backups.</p>
+
+  <h2>6. Data retention and deletion</h2>
+  <p>Because all data lives on OpalDreamCo's local computer, the operator can delete it at any time by removing the <code>./data/</code> directory.</p>
+  <p>OAuth connections can be revoked at any time:</p>
+  <ul>
+    <li><strong>Etsy:</strong> <a href="https://www.etsy.com/your/apps">https://www.etsy.com/your/apps</a></li>
+    <li><strong>Printful:</strong> <a href="https://www.printful.com/oauth/tokens">https://www.printful.com/oauth/tokens</a></li>
+    <li><strong>Pinterest:</strong> <a href="https://www.pinterest.com/settings/apps">https://www.pinterest.com/settings/apps</a></li>
+  </ul>
+  <p>Revoking a connection from the provider's side immediately stops PODStudio's access.</p>
+
+  <h2>7. Children's data</h2>
+  <p>PODStudio is not directed to children and does not knowingly collect any data from children.</p>
+
+  <h2>8. Security</h2>
+  <ul>
+    <li>OAuth flows use industry-standard authorization-code with PKCE.</li>
+    <li>All tokens are encrypted at rest (AES-256-GCM) before being written to disk.</li>
+    <li>The application binds to <code>http://localhost:3000</code> on OpalDreamCo's own machine and is not exposed to the public internet.</li>
+  </ul>
+
+  <h2>9. Changes to this policy</h2>
+  <p>If material changes are made to how PODStudio handles data, this document will be updated and the "Effective date" above will be revised.</p>
+
+  <h2>10. Contact</h2>
+  <p>OpalDreamCo — <a href="mailto:briansewell1@gmail.com">briansewell1@gmail.com</a></p>
+
+  <hr>
+  <footer>© OpalDreamCo</footer>
+</body>
+</html>
